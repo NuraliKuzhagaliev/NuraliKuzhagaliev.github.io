@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ панель - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank Admin</a>
+        <ul class="navbar-nav">
+          <li><a href="dashboard.html" class="nav-link">Кабинет</a></li>
+          <li><a href="admin_panel.html" class="nav-link active">Админ панель</a></li>
+          <li><a href="#" class="nav-link" id="logout-btn">Выйти</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container" style="padding-top: 2rem; padding-bottom: 3rem;">
+    <h1 style="margin-bottom: 2rem;">Панель администратора</h1>
+
+    <!-- Filters -->
+    <div class="card" style="margin-bottom: 2rem;">
+      <h3 style="margin-bottom: 1rem;">Фильтры</h3>
+      <form id="filter-form" class="grid grid-3">
+        <div class="form-group">
+          <label class="form-label" for="user_id">User ID</label>
+          <input type="number" id="user_id" name="user_id" class="form-input" placeholder="1">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="action_type">Тип действия</label>
+          <select id="action_type" name="action_type" class="form-select">
+            <option value="">Все</option>
+            <option value="update_goal_contribution">Обновление взноса</option>
+            <option value="create_goal">Создание цели</option>
+            <option value="balance_check">Проверка баланса</option>
+            <option value="transfer">Перевод</option>
+            <option value="payment">Платеж</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="status">Статус</label>
+          <select id="status" name="status" class="form-select">
+            <option value="">Все</option>
+            <option value="completed">Завершено</option>
+            <option value="pending">В ожидании</option>
+            <option value="failed">Ошибка</option>
+            <option value="cancelled">Отменено</option>
+          </select>
+        </div>
+
+        <div class="flex gap-md">
+          <button type="submit" class="btn btn-primary">Применить</button>
+          <button type="button" class="btn btn-ghost" id="clear-filters">Очистить</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Logs Table -->
+    <div class="card">
+      <h3 style="margin-bottom: 1rem;">Логи действий AI</h3>
+      <div id="logs-table">
+        <div class="flex-center" style="padding: 2rem;">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as admin from '../js/admin.js';
+    import * as auth from '../js/auth.js';
+    import * as ui from '../js/ui.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      auth.init();
+      ui.init();
+      admin.init();
+
+      // Logout handler
+      document.getElementById('logout-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        auth.logout();
+      });
+    });
+  </script>
+</body>
+</html>

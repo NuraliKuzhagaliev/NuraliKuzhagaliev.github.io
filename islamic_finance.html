@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Исламский банкинг - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank</a>
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link">О нас</a></li>
+          <li><a href="services.html" class="nav-link">Услуги</a></li>
+          <li><a href="islamic_finance.html" class="nav-link active">Исламский банкинг</a></li>
+          <li><a href="ai_assistant.html" class="nav-link">AI Помощник</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+          <li data-guest-only><a href="login.html" class="btn btn-outline btn-sm">Войти</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <h1 class="section-title">☪️ Исламский банкинг</h1>
+      <p class="section-subtitle">
+        Финансовые услуги в соответствии с принципами шариата
+      </p>
+
+      <div class="card fade-in">
+        <h2>Что такое исламский банкинг?</h2>
+        <p>
+          Исламский банкинг - это система финансовых услуг, основанная на принципах 
+          исламского права (шариата). Основные принципы включают запрет процентов (риба), 
+          запрет спекуляций (гарар) и инвестирование только в халяльный бизнес.
+        </p>
+      </div>
+
+      <div class="card slide-up">
+        <h2>Наши исламские продукты</h2>
+
+        <h3 style="margin-top: 1.5rem;">Мурабаха (Murabaha)</h3>
+        <p>
+          Продажа товара с наценкой. Банк покупает товар и продает его клиенту 
+          с фиксированной наценкой с отсрочкой платежа.
+        </p>
+
+        <h3 style="margin-top: 1.5rem;">Иджара (Ijara)</h3>
+        <p>
+          Лизинг имущества. Банк приобретает актив и сдает его в аренду клиенту 
+          с возможностью последующего выкупа.
+        </p>
+
+        <h3 style="margin-top: 1.5rem;">Мушарака (Musharaka)</h3>
+        <p>
+          Партнерство. Банк и клиент совместно инвестируют в проект и делят 
+          прибыль согласно договоренности.
+        </p>
+
+        <h3 style="margin-top: 1.5rem;">Вакала (Wakala)</h3>
+        <p>
+          Агентский договор. Клиент поручает банку управление своими средствами 
+          за фиксированное вознаграждение.
+        </p>
+      </div>
+
+      <div class="card slide-up">
+        <h2>Преимущества исламского банкинга</h2>
+        <ul style="padding-left: 1.5rem; line-height: 2;">
+          <li>✓ Полное соответствие принципам шариата</li>
+          <li>✓ Прозрачность всех операций</li>
+          <li>✓ Этичное инвестирование</li>
+          <li>✓ Разделение рисков между банком и клиентом</li>
+          <li>✓ Социальная ответственность</li>
+        </ul>
+      </div>
+
+      <div class="card slide-up" style="background: linear-gradient(135deg, var(--primary) 0%, var(--zaman-green) 100%); color: var(--white);">
+        <h2 style="color: var(--white);">Начните использовать исламский банкинг</h2>
+        <p style="color: rgba(255, 255, 255, 0.9);">
+          Откройте исламский счет сегодня и управляйте финансами в соответствии с вашими убеждениями
+        </p>
+        <a href="register.html" class="btn btn-secondary" style="margin-top: 1rem;">Открыть счет</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Zaman Bank. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import * as ui from '../js/ui.js';
+    import * as animations from '../js/animations.js';
+    import * as auth from '../js/auth.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ui.init();
+      animations.init();
+      auth.init();
+    });
+  </script>
+</body>
+</html>

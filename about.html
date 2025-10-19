@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank</a>
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link active">О нас</a></li>
+          <li><a href="services.html" class="nav-link">Услуги</a></li>
+          <li><a href="islamic_finance.html" class="nav-link">Исламский банкинг</a></li>
+          <li><a href="ai_assistant.html" class="nav-link">AI Помощник</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+          <li data-guest-only><a href="login.html" class="btn btn-outline btn-sm">Войти</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <h1 class="section-title fade-in">О Zaman Bank</h1>
+
+      <div class="card slide-up">
+        <h2>Наша миссия</h2>
+        <p>
+          Zaman Bank - это современный банк нового поколения, объединяющий передовые технологии 
+          искусственного интеллекта с традиционными принципами исламского банкинга. 
+          Наша миссия - сделать финансовые услуги доступными, понятными и удобными для каждого.
+        </p>
+      </div>
+
+      <div class="card slide-up">
+        <h2>Инновации и технологии</h2>
+        <p>
+          Мы используем AI для персонализированного финансового консультирования, 
+          голосового управления и автоматизации рутинных операций. Наш AI-помощник 
+          анализирует ваши финансовые привычки и помогает достигать финансовых целей быстрее.
+        </p>
+      </div>
+
+      <div class="card slide-up">
+        <h2>Исламские финансы</h2>
+        <p>
+          Zaman Bank предлагает полный спектр услуг исламского банкинга, соответствующих 
+          принципам шариата. Мы обеспечиваем прозрачность всех операций и этичное 
+          ведение бизнеса.
+        </p>
+      </div>
+
+      <div class="card slide-up">
+        <h2>Безопасность</h2>
+        <p>
+          Ваша безопасность - наш приоритет. Мы используем современные методы шифрования, 
+          многофакторную аутентификацию и постоянный мониторинг для защиты ваших средств и данных.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Zaman Bank</h4>
+          <p>Современный банкинг с искусственным интеллектом</p>
+        </div>
+        <div class="footer-section">
+          <h4>Услуги</h4>
+          <ul>
+            <li><a href="services.html">Счета и карты</a></li>
+            <li><a href="islamic_finance.html">Исламский банкинг</a></li>
+            <li><a href="ai_assistant.html">AI Помощник</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Компания</h4>
+          <ul>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Zaman Bank. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import * as ui from '../js/ui.js';
+    import * as animations from '../js/animations.js';
+    import * as auth from '../js/auth.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ui.init();
+      animations.init();
+      auth.init();
+    });
+  </script>
+</body>
+</html>

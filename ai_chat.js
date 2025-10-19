@@ -3,11 +3,11 @@
  * Handles AI assistant chat interface and voice interaction
  */
 
-import * as api from './api.js';
-import * as speech from './speech.js';
-import * as ui from './ui.js';
-import * as auth from './auth.js';
-import { toggleMicPulse } from './animations.js';
+import * as api from 'api.js';
+import * as speech from 'speech.js';
+import * as ui from 'ui.js';
+import * as auth from 'auth.js';
+import { toggleMicPulse } from 'animations.js';
 
 let messagesContainer;
 let messageInput;

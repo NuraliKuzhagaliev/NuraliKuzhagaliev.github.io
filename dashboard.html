@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank</a>
+        <ul class="navbar-nav">
+          <li><a href="dashboard.html" class="nav-link active">Кабинет</a></li>
+          <li><a href="ai_assistant.html" class="nav-link">AI Помощник</a></li>
+          <li><a href="#" class="nav-link" id="logout-btn">Выйти</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container" style="padding-top: 2rem; padding-bottom: 3rem;">
+    <!-- Welcome Section -->
+    <div style="margin-bottom: 2rem;">
+      <h1>Добро пожаловать, <span data-user-name>пользователь</span>!</h1>
+      <p style="color: var(--text-secondary);">Ваш финансовый обзор</p>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="stat-card" style="margin-bottom: 2rem;">
+      <div class="stat-label">Текущий баланс</div>
+      <div class="stat-value" id="balance-amount">250 000 ₸</div>
+      <div class="stat-change">+15% за последний месяц</div>
+    </div>
+
+    <!-- Financial Goals Section -->
+    <section style="margin-bottom: 3rem;">
+      <div class="flex-between" style="margin-bottom: 1.5rem;">
+        <h2>Финансовые цели</h2>
+        <button class="btn btn-primary" id="create-goal-btn" onclick="showCreateGoalModal()">
+          + Создать цель
+        </button>
+      </div>
+
+      <div id="goals-container" class="grid grid-2">
+        <div class="flex-center" style="padding: 2rem;">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Transactions -->
+    <section>
+      <h2 style="margin-bottom: 1.5rem;">Последние транзакции</h2>
+      <div id="transactions-table">
+        <div class="flex-center" style="padding: 2rem;">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module">
+    import * as dashboard from '../js/dashboard.js';
+    import * as auth from '../js/auth.js';
+    import * as ui from '../js/ui.js';
+    import * as validator from '../js/validator.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      auth.init();
+      ui.init();
+      dashboard.init();
+
+      // Logout handler
+      document.getElementById('logout-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        auth.logout();
+      });
+    });
+
+    // Show create goal modal
+    window.showCreateGoalModal = () => {
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.innerHTML = `
+        <div class="modal">
+          <div class="modal-header">
+            <h3 class="modal-title">Создать финансовую цель</h3>
+          </div>
+          <div class="modal-body">
+            <form id="create-goal-form">
+              <div class="form-group">
+                <label class="form-label" for="goal_title">Название цели</label>
+                <input 
+                  type="text" 
+                  id="goal_title" 
+                  name="goal_title" 
+                  class="form-input" 
+                  placeholder="Например: Отпуск в Дубай"
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="target_amount">Целевая сумма (₸)</label>
+                <input 
+                  type="number" 
+                  id="target_amount" 
+                  name="target_amount" 
+                  class="form-input" 
+                  placeholder="100000"
+                  min="1000"
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="deadline">Дедлайн</label>
+                <input 
+                  type="date" 
+                  id="deadline" 
+                  name="deadline" 
+                  class="form-input" 
+                  required
+                >
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-ghost" onclick="this.closest('.modal-overlay').remove()">
+                  Отмена
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Создать цель
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+      setTimeout(() => modal.classList.add('active'), 10);
+
+      // Prevent closing on modal content click
+      modal.querySelector('.modal').addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+
+      // Close on overlay click
+      modal.addEventListener('click', () => {
+        modal.classList.remove('active');
+        setTimeout(() => modal.remove(), 300);
+      });
+    };
+  </script>
+</body>
+</html>

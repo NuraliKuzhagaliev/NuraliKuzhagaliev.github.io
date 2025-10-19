@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Услуги - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank</a>
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link">О нас</a></li>
+          <li><a href="services.html" class="nav-link active">Услуги</a></li>
+          <li><a href="islamic_finance.html" class="nav-link">Исламский банкинг</a></li>
+          <li><a href="ai_assistant.html" class="nav-link">AI Помощник</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+          <li data-guest-only><a href="login.html" class="btn btn-outline btn-sm">Войти</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Наши услуги</h1>
+
+      <div class="grid grid-2">
+        <div class="card scroll-reveal">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">💳</div>
+          <h3>Счета и карты</h3>
+          <p>Бесплатное открытие счета, выгодные дебетовые и кредитные карты с кэшбэком до 5%</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Текущие счета</li>
+            <li>Сберегательные счета</li>
+            <li>Карты Visa и Mastercard</li>
+            <li>Виртуальные карты</li>
+          </ul>
+        </div>
+
+        <div class="card scroll-reveal">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">💰</div>
+          <h3>Кредиты и займы</h3>
+          <p>Быстрое одобрение, низкие процентные ставки, гибкие условия погашения</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Потребительские кредиты</li>
+            <li>Ипотека</li>
+            <li>Автокредиты</li>
+            <li>Бизнес-кредиты</li>
+          </ul>
+        </div>
+
+        <div class="card scroll-reveal">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+          <h3>Инвестиции</h3>
+          <p>Инвестиционные продукты для начинающих и опытных инвесторов</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Депозиты</li>
+            <li>Паевые фонды</li>
+            <li>Брокерское обслуживание</li>
+            <li>Доверительное управление</li>
+          </ul>
+        </div>
+
+        <div class="card scroll-reveal">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🏢</div>
+          <h3>Бизнес-решения</h3>
+          <p>Комплексное обслуживание для малого и среднего бизнеса</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Расчетно-кассовое обслуживание</li>
+            <li>Эквайринг</li>
+            <li>Корпоративные карты</li>
+            <li>Зарплатные проекты</li>
+          </ul>
+        </div>
+
+        <div class="card scroll-reveal">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
+          <h3>Международные переводы</h3>
+          <p>Быстрые и выгодные переводы по всему миру</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>SWIFT переводы</li>
+            <li>Western Union</li>
+            <li>Contact</li>
+            <li>Низкие комиссии</li>
+          </ul>
+        </div>
+
+        <div class="card scroll-reveal">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🤖</div>
+          <h3>AI Помощник</h3>
+          <p>Персональный финансовый консультант на базе AI</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Голосовое управление</li>
+            <li>Анализ расходов</li>
+            <li>Финансовые рекомендации</li>
+            <li>Автоматизация платежей</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Zaman Bank. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import * as ui from '../js/ui.js';
+    import * as animations from '../js/animations.js';
+    import * as auth from '../js/auth.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ui.init();
+      animations.init();
+      auth.init();
+    });
+  </script>
+</body>
+</html>

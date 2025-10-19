@@ -3,8 +3,8 @@
  * Handles admin panel functionality and AI action logs
  */
 
-import * as api from './api.js';
-import * as ui from './ui.js';
+import * as api from 'api.js';
+import * as ui from 'ui.js';
 
 let logsData = [];
 let currentFilters = {};

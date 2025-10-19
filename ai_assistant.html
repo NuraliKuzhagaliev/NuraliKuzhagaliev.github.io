@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Помощник - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .chat-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      height: calc(100vh - 200px);
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: var(--space-lg);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--zaman-green) 100%);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: var(--space-xl);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .message {
+      max-width: 70%;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--radius-lg);
+      animation: slideUp 0.3s ease-out;
+    }
+
+    .message-user {
+      align-self: flex-end;
+      background-color: var(--primary);
+      color: var(--white);
+      border-bottom-right-radius: var(--radius-sm);
+    }
+
+    .message-assistant {
+      align-self: flex-start;
+      background-color: var(--surface);
+      color: var(--text-primary);
+      border-bottom-left-radius: var(--radius-sm);
+    }
+
+    .message-time {
+      font-size: var(--text-xs);
+      opacity: 0.7;
+      margin-top: var(--space-xs);
+    }
+
+    .chat-input-area {
+      padding: var(--space-lg);
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: var(--space-md);
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      min-height: 50px;
+      max-height: 150px;
+      resize: none;
+    }
+
+    .mic-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--white);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-base);
+    }
+
+    .mic-button:hover {
+      transform: scale(1.05);
+    }
+
+    .mic-button.listening {
+      background-color: var(--error);
+    }
+
+    .voice-toggle {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--white);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank</a>
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link">О нас</a></li>
+          <li><a href="services.html" class="nav-link">Услуги</a></li>
+          <li><a href="islamic_finance.html" class="nav-link">Исламский банкинг</a></li>
+          <li><a href="ai_assistant.html" class="nav-link active">AI Помощник</a></li>
+          <li><a href="contacts.html" class="nav-link">Контакты</a></li>
+          <li data-auth-required style="display: none;"><a href="dashboard.html" class="btn btn-primary btn-sm">Личный кабинет</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="chat-container">
+      <div class="chat-header">
+        <div>
+          <h2 style="margin: 0; color: var(--white);">AI Финансовый помощник</h2>
+          <p style="margin: 0; opacity: 0.9; font-size: var(--text-sm);">Спросите о балансе, целях или транзакциях</p>
+        </div>
+
+        <div class="voice-toggle">
+          <label style="cursor: pointer;">
+            <input type="checkbox" id="voice-toggle" checked> 🔊 Голос
+          </label>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be added here dynamically -->
+      </div>
+
+      <div class="chat-input-area">
+        <textarea 
+          id="message-input" 
+          class="form-input chat-input" 
+          placeholder="Введите сообщение или используйте микрофон..."
+          rows="1"
+        ></textarea>
+
+        <button id="mic-button" class="mic-button" title="Голосовой ввод">
+          🎤
+        </button>
+
+        <button id="send-button" class="btn btn-primary" style="height: 50px;">
+          Отправить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as aiChat from '../js/ai_chat.js';
+    import * as auth from '../js/auth.js';
+    import * as ui from '../js/ui.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      auth.init();
+      ui.init();
+      aiChat.init();
+    });
+  </script> 
+</body>
+</html>

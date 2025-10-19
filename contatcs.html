@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="navbar-brand">🏦 Zaman Bank</a>
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="nav-link">Главная</a></li>
+          <li><a href="about.html" class="nav-link">О нас</a></li>
+          <li><a href="services.html" class="nav-link">Услуги</a></li>
+          <li><a href="islamic_finance.html" class="nav-link">Исламский банкинг</a></li>
+          <li><a href="ai_assistant.html" class="nav-link">AI Помощник</a></li>
+          <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
+          <li data-guest-only><a href="login.html" class="btn btn-outline btn-sm">Войти</a></li>
+        </ul>
+        <button class="nav-toggle">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Свяжитесь с нами</h1>
+
+      <div class="grid grid-2" style="margin-bottom: 3rem;">
+        <div class="card fade-in">
+          <h3>📞 Телефон</h3>
+          <p style="font-size: var(--text-xl); font-weight: 600; color: var(--primary);">
+            +7 (777) 123-45-67
+          </p>
+          <p style="color: var(--text-secondary);">Круглосуточная поддержка</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>✉️ Email</h3>
+          <p style="font-size: var(--text-xl); font-weight: 600; color: var(--primary);">
+            support@zamanbank.kz
+          </p>
+          <p style="color: var(--text-secondary);">Ответим в течение 24 часов</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>📍 Адрес</h3>
+          <p style="font-weight: 600;">
+            г. Астана, пр. Мангилик Ел, 55/20
+          </p>
+          <p style="color: var(--text-secondary);">Главный офис</p>
+        </div>
+
+        <div class="card fade-in">
+          <h3>🕐 Часы работы</h3>
+          <p style="font-weight: 600;">
+            Пн-Пт: 9:00 - 18:00<br>
+            Сб: 10:00 - 16:00<br>
+            Вс: Выходной
+          </p>
+        </div>
+      </div>
+
+      <div class="card container-narrow" style="margin: 0 auto;">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Отправить сообщение</h2>
+
+        <form id="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="name">Имя</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">Тема</label>
+            <input type="text" id="subject" name="subject" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Сообщение</label>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Отправить сообщение
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Zaman Bank. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import * as ui from '../js/ui.js';
+    import * as animations from '../js/animations.js';
+    import * as auth from '../js/auth.js';
+    import * as validator from '../js/validator.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      ui.init();
+      animations.init();
+      auth.init();
+
+      // Handle contact form
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const isValid = validator.validateForm(form, {
+          name: [(val) => validator.validateRequired(val, 'Имя')],
+          email: [(val) => validator.validateEmail(val)],
+          subject: [(val) => validator.validateRequired(val, 'Тема')],
+          message: [(val) => validator.validateRequired(val, 'Сообщение')]
+        });
+
+        if (isValid) {
+          ui.showToast('Сообщение отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
+          form.reset();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

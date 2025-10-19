@@ -3,10 +3,10 @@
  * Handles dashboard data display and interactions
  */
 
-import * as api from './api.js';
-import * as auth from './auth.js';
-import * as ui from './ui.js';
-import * as validator from './validator.js';
+import * as api from 'api.js';
+import * as auth from 'auth.js';
+import * as ui from 'ui.js';
+import * as validator from 'validator.js';
 
 let goalsData = [];
 let transactionsData = [];

@@ -3,8 +3,8 @@
  * Handles user authentication and session management
  */
 
-import * as api from './api.js';
-import { showToast } from './ui.js';
+import * as api from 'api.js';
+import { showToast } from 'ui.js';
 
 /**
  * Initialize auth module

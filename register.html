@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация - Zaman Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body>
+  <div class="flex-center" style="min-height: 100vh; background: linear-gradient(135deg, var(--zaman-green) 0%, var(--primary) 100%); padding: 2rem;">
+    <div class="card scale-in" style="max-width: 450px; width: 100%;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="color: var(--primary); margin-bottom: 0.5rem;">🏦 Zaman Bank</h1>
+        <h2 style="font-size: var(--text-2xl);">Регистрация</h2>
+      </div>
+
+      <form id="register-form">
+        <div class="form-group">
+          <label class="form-label" for="name">Полное имя</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            class="form-input" 
+            placeholder="Иван Иванов"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-input" 
+            placeholder="your@email.com"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Пароль</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-input" 
+            placeholder="••••••••"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirm_password">Подтвердите пароль</label>
+          <input 
+            type="password" 
+            id="confirm_password" 
+            name="confirm_password" 
+            class="form-input" 
+            placeholder="••••••••"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Зарегистрироваться
+          </button>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem;">
+          <p style="color: var(--text-secondary);">
+            Уже есть аккаунт? <a href="login.html" style="color: var(--primary); font-weight: 600;">Войти</a>
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 1rem;">
+          <a href="index.html" class="btn btn-ghost">← Вернуться на главную</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as auth from '../js/auth.js';
+    import * as validator from '../js/validator.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('register-form');
+      form.addEventListener('submit', auth.handleRegister);
+
+      // Real-time validation
+      const nameInput = form.name;
+      const emailInput = form.email;
+      const passwordInput = form.password;
+      const confirmPasswordInput = form.confirm_password;
+
+      nameInput.addEventListener('blur', () => {
+        const result = validator.validateRequired(nameInput.value, 'Имя');
+        if (!result.ok) {
+          validator.showError(nameInput, result.message);
+        } else {
+          validator.clearError(nameInput);
+        }
+      });
+
+      emailInput.addEventListener('blur', () => {
+        const result = validator.validateEmail(emailInput.value);
+        if (!result.ok) {
+          validator.showError(emailInput, result.message);
+        } else {
+          validator.clearError(emailInput);
+        }
+      });
+
+      passwordInput.addEventListener('blur', () => {
+        const result = validator.validatePassword(passwordInput.value);
+        if (!result.ok) {
+          validator.showError(passwordInput, result.message);
+        } else {
+          validator.clearError(passwordInput);
+        }
+      });
+
+      confirmPasswordInput.addEventListener('blur', () => {
+        if (confirmPasswordInput.value !== passwordInput.value) {
+          validator.showError(confirmPasswordInput, 'Пароли не совпадают');
+        } else {
+          validator.clearError(confirmPasswordInput);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
